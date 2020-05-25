@@ -3,9 +3,9 @@ import os
 import re
 import json
 try:
-    import xmlrpclib
-except ImportError as e:
     import xmlrpc.client as xmlrpclib
+except ImportError:
+    from .xmlrpc import client as xmlrpclib
 
 from .text import markdown
 from .util import read_file, slugify

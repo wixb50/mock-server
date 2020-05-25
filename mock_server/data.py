@@ -24,10 +24,11 @@ SUPPORTED_FORMATS = {
 
 def _supported_mimes(SUPPORTED_FORMATS):
     supported_mimes = {}
-    for format, mimes in SUPPORTED_FORMATS.items():
+    for format, mimes in list(SUPPORTED_FORMATS.items()):
         for mime in mimes:
             supported_mimes[mime] = format
     return supported_mimes
+
 
 SUPPORTED_MIMES = _supported_mimes(SUPPORTED_FORMATS)
 

@@ -35,10 +35,10 @@ if __name__ == "__main__":
 
     provider = FilesMockProvider("/Users/tomashanacek/Downloads/api")
 
-    print(provider(api.Request(body='{"method": "user.list", "id": 1}')))
-    print(provider.error)
+    print((provider(api.Request(body='{"method": "user.list", "id": 1}'))))
+    print((provider.error))
 
-    print(provider(
+    print((provider(
         method_name=FilesMockProvider.get_method_name(
-            '{"method": "user.get", "id": 1}')))
-    print(provider.error)
+            '{"method": "user.get", "id": 1}'))))
+    print((provider.error))

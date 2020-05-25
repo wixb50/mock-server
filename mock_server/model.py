@@ -81,7 +81,7 @@ class ApiData(object):
             return
 
         self.categories = set(resource["category"]
-                              for resource in self.resources.values()
+                              for resource in list(self.resources.values())
                               if "category" in resource)
 
     def save(self):
@@ -116,7 +116,7 @@ class ApiData(object):
         if self.resources:
             categories = {}
             resources = {}
-            for file_url_path, resource in self.resources.items():
+            for file_url_path, resource in list(self.resources.items()):
                 if "category" in resource and resource["category"]:
                     categories[resource["category"]] = []
                     resources[get_url_path(file_url_path)] = resource
@@ -125,6 +125,9 @@ class ApiData(object):
             resources = []
 
         categories["__default"] = []
+
+        def cmp(x, y):
+            return (x > y) - (x < y)
 
         def compare_category_name(x, y):
             if y[0] == "__default":
@@ -275,7 +278,7 @@ class ResourceMethod(BaseMethod):
     def save_description(self):
         description_path = os.path.join(
             self.resource_dir, "%s_doc.md" % self.method)
-        with open(description_path, "w") as f:
+        with open(description_path, "wb") as f:
             f.write(utf8(self.description))
 
     def save_response(self, status_code, format, body, headers):
@@ -287,11 +290,11 @@ class ResourceMethod(BaseMethod):
             "%s_H_%s.%s" % (self.method, status_code, format))
 
         # write content
-        with open(content_path, "w") as f:
+        with open(content_path, "wb") as f:
             f.write(utf8(body))
 
         # write headers
-        with open(headers_path, "w") as f:
+        with open(headers_path, "wb") as f:
             f.write(utf8(headers))
 
     def delete(self):
@@ -337,14 +340,14 @@ class RPCMethod(BaseMethod):
         # write method
         method_path = os.path.join(self.methods_dir, self.name)
 
-        with open(method_path, "w") as f:
+        with open(method_path, "wb") as f:
             f.write(utf8(response))
 
     def save_description(self):
         description_path = os.path.join(
             self.methods_dir,
             "%s_doc.md" % self.name)
-        with open(description_path, "w") as f:
+        with open(description_path, "wb") as f:
             f.write(utf8(self.description))
 
     def delete(self):

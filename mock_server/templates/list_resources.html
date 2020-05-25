@@ -15,7 +15,7 @@
 {% if some_method %}
 <div class="span3 bs-docs-sidebar">
     <ul class="nav nav-list bs-docs-sidenav" id="sidenav">
-      {% for category, paths in categories.iteritems() %}{% if paths %}
+      {% for category, paths in categories.items() %}{% if paths %}
         <li{% if number_of_methods < MAX_NUMBER_OF_METHODS %} class="category"{% end %}><a href="#{{category}}"><i class="icon-chevron-right"></i> {% if category == "__default" %}Not in category{% else %}{{category}}{% end %}</a></li>
         {% if number_of_methods < MAX_NUMBER_OF_METHODS %}
         {% for type, path in paths %}
@@ -40,11 +40,11 @@
 
     {% if some_method %}
 
-    {% for category, paths in categories.iteritems() %}{% if paths %}
+    {% for category, paths in categories.items() %}{% if paths %}
     <h2 id="{{category}}">{% if category == "__default" %}Not in category{% else %}{{category}}{% end %}</h2>
     {% for type, path in paths %}
     {% if type == "rest" %}
-    {% for resource in path.resources.itervalues() %}
+    {% for resource in path.resources.values() %}
     <section id="{{resource.url_path}}">
     <div class="navbar">
       <div class="navbar-inner">
@@ -141,7 +141,7 @@
                 <p>{% raw path["description"] %}</p>
             </div>
             {% end %}
-            {% for i, (format, response) in enumerate(path["responses"].iteritems()) %}
+            {% for i, (format, response) in enumerate(path["responses"].items()) %}
             <div id="{{path["id"]}}{{format}}" class="{% if path["description"] %}ppp {% end %}tab-pane{% if i == 0 %} active{% end %}">
               <pre class="prettyprint linenums">{{response.data}}</pre>
               <pre class="prettyprint">

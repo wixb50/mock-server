@@ -5,11 +5,6 @@ Simple mock server for REST and XML-RPC API
 
 It can mock GET, POST, PUT, PATCH, DELETE and some more rarely used HTTP methods.
 
-Build status at `Travis CI <http://travis-ci.org/>`_: |travis|
-
-.. |travis| image:: https://travis-ci.org/tomashanacek/mock-server.png?branch=master
-    :target: https://travis-ci.org/tomashanacek/mock-server
-
 DEMO
 ====
 
@@ -20,12 +15,7 @@ Installation
 
 Install with pip::
 
-    $ pip install mock-server
-
-
-Or install with easy_install::
-
-    $ easy_install mock-server
+    $ pip install git+https://github.com/wixb50/mock-server.git
 
 And after run::
 
@@ -96,7 +86,7 @@ response headers format: ``%METHOD%_H_%STATUS%.%FORMAT%``
 Bug report
 ==========
 
-If you have any trouble, report bug at GitHub Issue https://github.com/tomashanacek/mock-server/issues
+If you have any trouble, report bug at GitHub Issue https://github.com/wixb50/mock-server/issues
 
 Contributors
 ============

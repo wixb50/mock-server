@@ -176,8 +176,8 @@ if __name__ == "__main__":
 
     provider = FilesMockProvider("/Users/tomashanacek/Downloads/api")
 
-    print(resolve_request(provider, "post", "/ble"))
-    print(resolve_request(provider, "get", "/user/tomas/family/marek"))
+    print((resolve_request(provider, "post", "/ble")))
+    print((resolve_request(provider, "get", "/user/tomas/family/marek")))
 
-    print(resolve_request(provider, "get", "/user/dsfsd"))
-    print(resolve_request(provider, "get", "/dsf"))
+    print((resolve_request(provider, "get", "/user/dsfsd")))
+    print((resolve_request(provider, "get", "/dsf")))

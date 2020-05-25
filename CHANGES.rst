@@ -1,6 +1,10 @@
 History
 =======
 
+0.4.0
+----------------
+- python3.5+ support
+
 0.3.9
 ----------------
 - fix unicode 500 error

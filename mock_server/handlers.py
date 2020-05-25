@@ -379,7 +379,7 @@ class ListResourcesHandler(BaseHandler, FlashMessageMixin):
 
         # add resources to category
         for path in paths:
-            for resource in path.resources.values():
+            for resource in list(path.resources.values()):
                 if resource.id in methods_with_category:
                     category = methods_with_category[resource.id]["category"]
                 else:

@@ -26,4 +26,4 @@ class TestXMLRPC(tornado.testing.AsyncHTTPTestCase):
             "<?xml version='1.0'?>\n<methodResponse>\n<params>\n<param>\n"
             "<value><array><data>\n<value><string>john</string></value>\n"
             "<value><string>tom</string></value>\n</data></array></value>"
-            "\n</param>\n</params>\n</methodResponse>\n")
+            "\n</param>\n</params>\n</methodResponse>\n".encode())

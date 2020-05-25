@@ -16,7 +16,7 @@ with open(os.path.join(root_dir, "requirements.txt")) as f:
 
 description = "%s\n\n%s" % (read("README.rst"), read("CHANGES.rst"))
 
-classifiers = ["Programming Language :: Python",
+classifiers = ["Programming Language :: Python :: 3",
                "License :: OSI Approved :: Apache Software License",
                "Intended Audience :: Developers",
                "Topic :: Internet",
@@ -29,8 +29,8 @@ setup(
     description=("Simple mock server for REST API"),
     long_description=description,
     author="Tomas Hanacek",
-    author_email="tomas.hanacek1@gmail.com",
-    url="https://github.com/tomashanacek/mock-server",
+    author_email="wixb50@gmail.com",
+    url="https://github.com/wixb50/mock-server",
     license="http://www.apache.org/licenses/LICENSE-2.0",
     packages=["mock_server"],
     scripts=["bin/mock-server"],

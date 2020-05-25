@@ -3,6 +3,7 @@
 import os
 import subprocess
 import time
+import json
 
 import tornado.testing
 from mock_server.application import Application
@@ -35,14 +36,14 @@ class TestRestApi(tornado.testing.AsyncHTTPTestCase):
 
         self.assertFalse(response.error)
         self.assertEqual(response.code, 200)
-        self.assertEqual(response.body, '["john", "tom"]\n')
+        self.assertEqual(response.body, '["john", "tom"]\n'.encode())
 
     def test_user_doesnt_exists_with_custom_header(self):
         response = self.fetch("/user/tom?__statusCode=404")
 
         self.assertEqual(response.code, 404)
         self.assertEqual(response.body,
-                         '{"message": "User doesn\'t exists"}\n')
+                         '{"message": "User doesn\'t exists"}\n'.encode())
         self.assertEqual(response.headers["MyCustomHeader"], "test")
 
     def test_noexists_method(self):
@@ -54,27 +55,27 @@ class TestRestApi(tornado.testing.AsyncHTTPTestCase):
             'Api does\'t exists, '
             '<a href="/__manage/create?url_path=/user/'
             'john/data&method=GET&status_code=200&format=json">'
-            'create resource method</a>')
+            'create resource method</a>'.encode())
 
     def test_url_with_variables(self):
         response = self.fetch("/user/lisa/family/bart")
 
         self.assertEqual(response.code, 200)
-        self.assertTrue("bart" in response.body)
+        self.assertTrue(b"bart" in response.body)
 
     def test_hello_on_upstream_server(self):
         response = self.fetch("/hello")
 
         self.assertEqual(response.code, 200)
-        self.assertEqual(response.body, "Hello from upstream server")
+        self.assertEqual(response.body, "Hello from upstream server".encode())
 
     def test_custom_provider(self):
         response = self.fetch("/abc")
 
         self.assertEqual(response.code, 200)
         self.assertEqual(
-            response.body,
-            '{"surname": "Hanacek", "name": "Tomas"}')
+            json.loads(response.body.decode()),
+            {"name": "Tomas", "surname": "Hanacek"})
         self.assertEqual(
             response.headers["Content-Type"],
             "application/json; charset=utf-8")
