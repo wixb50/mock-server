@@ -106,7 +106,7 @@
         <div class="navbar-inner">
           <a class="brand" href="#">RPC/{{path["name"]}}</a>
           <ul class="nav">
-            {% for i, format in enumerate(path["responses"].iterkeys()) %}
+            {% for i, format in enumerate(path["responses"].keys()) %}
             <li {% if i == 0 %}class="active"{% end %}><a class="trigger-{{path["id"]}}{{format}}" href="#{{path["id"]}}{{format}}" data-toggle="tab">{{format}}</a></li>
             {% end %}
           </ul>
